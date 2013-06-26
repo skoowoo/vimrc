@@ -10,11 +10,21 @@ Bundle 'gmarik/vundle'
 
 " github 库
 "
+" Go 语言插件
 Bundle 'skoo87/go.vim'
+
+" vim里面支持shell终端
 Bundle 'skoo87/vimproc'
 Bundle 'skoo87/vimshell'
+
+" c/c++项目工程插件
 Bundle 'skoo87/p'
+
+" 书签插件
 Bundle 'skoo87/bookmarking.vim'
+
+" 主要提供 xolox#shell#execute() 后台执行外部命令的接口
+Bundle 'vim-scripts/shell.vim--Odding'
 
 " vim-scripts 库
 "
