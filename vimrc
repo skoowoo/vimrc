@@ -47,22 +47,22 @@ filetype plugin indent on
 
 
 "------------------------------------------------------------------------------
-" 								快捷键设置
+"                                   快捷键设置
 "------------------------------------------------------------------------------
 " c/c++头源之间的切换
-nnoremap <silent> <F12> :A<CR> 			
+nnoremap <silent> <F12> :A<CR>          
 
 " 选中状态下 Ctrl+c 复制
-vmap <C-c> "+y 							
+vmap <C-c> "+y                          
 
 " 上下左右切换到左窗口 
-nnoremap <C-h> <C-w>h 					
-nnoremap <C-j> <C-w>j	
+nnoremap <C-h> <C-w>h                   
+nnoremap <C-j> <C-w>j   
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " Buffers操作快捷方式
-nnoremap <C-RETURN> :bnext<CR>			
+nnoremap <C-RETURN> :bnext<CR>          
 nnoremap <C-S-RETURN> :bprevious<CR>
 
 " 更新项目tags
@@ -81,27 +81,27 @@ imap <D-p> <C-p>
 
 
 " -----------------------------------------------------------------------------
-" 								基本配置
+"                               基本配置
 " -----------------------------------------------------------------------------
-set nu! 					" 显示行号
+set nu!                     " 显示行号
 set ruler                   " 打开状态栏标尺
 set sm!
 set cin!
-set nobackup				" 覆盖文件时不备份
-set noswapfile  			" 禁止生产临时文件
-set hlsearch 				" 搜索时高亮显示被找到的文本
-set incsearch			    " 输入搜索串逐字符高亮
-set expandtab				" tab用空格代替
-set tabstop=4				" tab长度为4
-set shiftwidth=4			" 设定 << 和 >> 命令移动时的宽度为 4
-set softtabstop=4 		    " 使得按退格键时可以一次删掉 4 个空格
+set nobackup                " 覆盖文件时不备份
+set noswapfile              " 禁止生产临时文件
+set hlsearch                " 搜索时高亮显示被找到的文本
+set incsearch               " 输入搜索串逐字符高亮
+set expandtab               " tab用空格代替
+set tabstop=4               " tab长度为4
+set shiftwidth=4            " 设定 << 和 >> 命令移动时的宽度为 4
+set softtabstop=4           " 使得按退格键时可以一次删掉 4 个空格
 set backspace=2
-" set autochdir				" 自动切换当前目录为当前文件所在的目录
-set ignorecase smartcase 	" 搜索时忽略大小写，但在有一个或以上大写字母时仍
+" set autochdir             " 自动切换当前目录为当前文件所在的目录
+set ignorecase smartcase    " 搜索时忽略大小写，但在有一个或以上大写字母时仍
                             " 保持对大小写敏感
 
-set nowrapscan 				" 禁止在搜索到文件两端时重新搜索
-set noerrorbells 			" 关闭错误警告声
+set nowrapscan              " 禁止在搜索到文件两端时重新搜索
+set noerrorbells            " 关闭错误警告声
 set novisualbell            " 关闭使用可视响铃代替呼叫
 set magic                   " 魔法
 set hidden                  " 允许在有未保存的修改时切换缓冲区，此时的修改由 
@@ -121,9 +121,9 @@ set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:
 set go-=r                   " 去掉滚动条
 filetype plugin indent on   " 开启插件
 syntax enable
-syntax on					" 自动语法高亮
+syntax on                   " 自动语法高亮
 set t_Co=256                " 支持256色
-colorscheme desertEx 		" 颜色方案
+colorscheme desertEx        " 颜色方案
 
 set guifont=Droid\ Sans\ Mono:h13
                             " 设置Droid sans mono字体
@@ -138,7 +138,7 @@ au BufRead,BufNewFile *.c,*.cpp,*.py,*.go 2match Underlined /.\%81v/
 
 
 "------------------------------------------------------------------------------
-" 							 自定义函数				
+"                            自定义函数             
 "------------------------------------------------------------------------------
 "" 获取操作系统类型
 function! MySys()
@@ -166,7 +166,7 @@ endfunction
 
 
 "------------------------------------------------------------------------------
-" 				plugin - taglist.vim  查看函数列表，需要ctags程序
+"               plugin - taglist.vim  查看函数列表，需要ctags程序
 "------------------------------------------------------------------------------
 if MySys() == "windows"                 " 设定windows系统中ctags程序的位置
     let Tlist_Ctags_Cmd = '"'.$VIMRUNTIME.'/ctags.exe"'
@@ -199,14 +199,14 @@ let Tlist_Compact_Format = 1
 " u 打开上层目录                 m 显示文件系统菜单（添加、删除、移动操作）
 " r 递归刷新当前目录             R 递归刷新当前根目录
 "------------------------------------------------------------------------------
-let NERDTreeWinPos = "right" 				" 目录列表窗口居右
+let NERDTreeWinPos = "right"                " 目录列表窗口居右
 
-map <F9> :NERDTreeToggle<CR> 				
+map <F9> :NERDTreeToggle<CR>                
 imap <F9> <ESC>:NERDTreeToggle<CR>
                                             " f9开关窗口
 
 "------------------------------------------------------------------------------
-"							启动vim自动最大化
+"                           启动vim自动最大化
 "------------------------------------------------------------------------------
 if MySys() == "windows" 
     au GUIEnter * simalt ~x
