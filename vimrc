@@ -14,6 +14,7 @@ Bundle 'skoo87/go.vim'
 Bundle 'skoo87/vimproc'
 Bundle 'skoo87/vimshell'
 Bundle 'skoo87/p'
+Bundle 'skoo87/bookmarking.vim'
 
 " vim-scripts 库
 "
