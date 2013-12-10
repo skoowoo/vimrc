@@ -25,6 +25,7 @@ Bundle 'skoo87/bookmarking.vim'
 
 " 主要提供 xolox#shell#execute() 后台执行外部命令的接口
 Bundle 'vim-scripts/shell.vim--Odding'
+Bundle 'dgryski/vim-godef'
 
 " vim-scripts 库
 "
@@ -257,3 +258,10 @@ augroup filetype
 augroup end
 
 autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+
+
+"------------------------------------------------------------------------------
+"                       plugin - godef
+"------------------------------------------------------------------------------
+let g:godef_split = 2
+let g:godef_same_file_in_same_window = 1
