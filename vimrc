@@ -80,7 +80,7 @@ nnoremap <C-S-RETURN> :bprevious<CR>
 nnoremap <silent> <F11> :UpdateMyProject<CR>
 
 " 搜索光标处的字符串
-nnoremap <silent> <F3> :Grep<CR>
+nnoremap <silent> <F3> :Rgrep<CR>
 
 " 打开shell窗口
 nnoremap <F10> :VimShellPop<CR>
@@ -144,7 +144,6 @@ set guifont=Droid\ Sans\ Mono:h13
                             " 设置Droid sans mono字体
 
 set scrolloff=3             " 光标保持buffer顶和底部3行的距离
-"set cc=80                   " 80列高亮提示
 
 set fileencodings=ucs-bom,utf-8,chinese,cp936          
                             " 设置编码为utf-8
@@ -155,22 +154,6 @@ au BufRead,BufNewFile *.c,*.cpp,*.py,*.go 2match Underlined /.\%81v/
 "------------------------------------------------------------------------------
 "                            自定义函数             
 "------------------------------------------------------------------------------
-"" 获取操作系统类型
-function! MySys()
-    if has("win16") || has("win32") || has("win64") || has("win95")
-        return "windows"
-    elseif has("unix")
-        return "linux"
-    endif
-endfunction
-
-
-"" 最大化windows窗口 - 用于linux环境
-function! MaximizeWindow()
-    silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
-endfunction
-
-
 "" 执行ctags程序的函数
 function! Do_CsTag()
     if(executable('ctags'))
@@ -179,18 +162,11 @@ function! Do_CsTag()
 endfunction
 
 
-
 "------------------------------------------------------------------------------
 "               plugin - taglist.vim  查看函数列表，需要ctags程序
 "------------------------------------------------------------------------------
-if MySys() == "windows"                 " 设定windows系统中ctags程序的位置
-    let Tlist_Ctags_Cmd = '"'.$VIMRUNTIME.'/ctags.exe"'
-elseif MySys() == "linux"               " 设定linux系统中ctags程序的位置
-    let Tlist_Ctags_Cmd = '/opt/local/bin/ctags'
-endif
-
 nnoremap <silent><F8> :TlistToggle<CR> 
-                                        " F9打开函数列表窗口
+                                        " F8打开函数列表窗口
 
 let Tlist_Show_One_File = 1             " 不同时显示多个文件的tag，只显示当前文件的
 let Tlist_Exit_OnlyWindow = 1           " 如果taglist窗口是最后一个窗口，则退出vim
@@ -205,31 +181,13 @@ let Tlist_Compact_Format = 1
 
 
 "------------------------------------------------------------------------------
-" plugin - NERD_tree.vim 以树状方式浏览系统中的文件和目录
-" :ERDtree 打开NERD_tree         :NERDtreeClose    关闭NERD_tree
-" o 打开关闭文件或者目录         t 在标签页中打开
-" T 在后台标签页中打开           ! 执行此文件
-" p 到上层目录                   P 到根目录
-" K 到第一个节点                 J 到最后一个节点
-" u 打开上层目录                 m 显示文件系统菜单（添加、删除、移动操作）
-" r 递归刷新当前目录             R 递归刷新当前根目录
+"               plugin - NERD_tree.vim 
 "------------------------------------------------------------------------------
 let NERDTreeWinPos = "right"                " 目录列表窗口居右
 
 map <F9> :NERDTreeToggle<CR>                
 imap <F9> <ESC>:NERDTreeToggle<CR>
                                             " f9开关窗口
-
-"------------------------------------------------------------------------------
-"                           启动vim自动最大化
-"------------------------------------------------------------------------------
-if MySys() == "windows" 
-    au GUIEnter * simalt ~x
-elseif MySys() == "linux" 
-    au GUIEnter * call MaximizeWindow()
-endif
- 
-
 
 "------------------------------------------------------------------------------
 "                      plugin - OmniCppComplete
