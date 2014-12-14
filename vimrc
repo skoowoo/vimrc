@@ -3,57 +3,60 @@
 " ----------------------------------------------------------------------------
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
 
 
 " github 库
 "
 " Go 语言插件
-Bundle 'skoo87/go.vim'
-Bundle 'dgryski/vim-godef'
+"Plugin 'skoo87/go.vim'
+"Plugin 'dgryski/vim-godef'
+Plugin 'fatih/vim-go'
 
 " vim里面支持shell终端
-Bundle 'skoo87/vimproc'
-Bundle 'skoo87/vimshell'
+" Plugin 'skoo87/vimproc'
+" Plugin 'skoo87/vimshell'
 
 " c/c++项目工程插件
-Bundle 'skoo87/p'
+Plugin 'skoo87/p'
 
 " 书签插件
-Bundle 'skoo87/bookmarking.vim'
+Plugin 'skoo87/bookmarking.vim'
+Plugin 'othree/xml.vim'
 
 " 主要提供 xolox#shell#execute() 后台执行外部命令的接口
-Bundle 'vim-scripts/shell.vim--Odding'
+Plugin 'vim-scripts/shell.vim--Odding'
 
 " vim-scripts 库
 "
-Bundle 'taglist.vim'
-Bundle 'OmniCppComplete'
-Bundle 'The-NERD-tree'
-Bundle 'SuperTab'
-" Bundle 'a.vim'
-Bundle 'c.vim'
-Bundle 'genutils'
-Bundle 'grep.vim'
-Bundle 'SudoEdit.vim'
+Plugin 'taglist.vim'
+Plugin 'OmniCppComplete'
+Plugin 'The-NERD-tree'
+Plugin 'SuperTab'
+" Plugin 'a.vim'
+Plugin 'c.vim'
+Plugin 'genutils'
+Plugin 'grep.vim'
+Plugin 'SudoEdit.vim'
+Plugin 'DrawIt'
 
 " NOTE: 自己修改了plugin/lookupfile.vim中的快捷键为F4, 默认F5.
-Bundle 'lookupfile'
+Plugin 'lookupfile'
 
-Bundle 'unite.vim'
-Bundle 'desertEx'
-Bundle 'CSApprox'
+Plugin 'unite.vim'
+Plugin 'desertEx'
+Plugin 'CSApprox'
 
 " 非github 库
 "
-" Bundle 'git://git.wincent.com/command-t.git'
+" Plugin 'git://git.wincent.com/command-t.git'
 
 " 本地git 库
 "
-" Bundle 'file:///Users/gmarik/path/to/plugin'
-
+" Plugin 'file:///Users/gmarik/path/to/plugin'
+call vundle#end()
 filetype plugin indent on
 
 
@@ -61,7 +64,7 @@ filetype plugin indent on
 "                                   快捷键设置
 "------------------------------------------------------------------------------
 " c/c++头源之间的切换
-nnoremap <silent> <F12> :A<CR>          
+nnoremap <silent> <F10> :A<CR>          
 
 " 选中状态下 Ctrl+c 复制
 vmap <C-c> "+y                          
@@ -77,13 +80,13 @@ nnoremap <C-RETURN> :bnext<CR>
 nnoremap <C-S-RETURN> :bprevious<CR>
 
 " 更新项目tags
-nnoremap <silent> <F11> :UpdateMyProject<CR>
+" nnoremap <silent> <F11> :UpdateMyProject<CR>
 
 " 搜索光标处的字符串
 nnoremap <silent> <F3> :Rgrep<CR>
 
 " 打开shell窗口
-nnoremap <F10> :VimShellPop<CR>
+" nnoremap <F19> :VimShellPop<CR>
 
 " 插入模式下补全快捷键, gocode
 imap <D-u> <C-x><C-o>
@@ -149,6 +152,7 @@ set fileencodings=ucs-bom,utf-8,chinese,cp936
                             " 设置编码为utf-8
 au BufRead,BufNewFile *.c,*.cpp,*.py,*.go 2match Underlined /.\%81v/
                             " 80列提醒
+set autoread
 
 
 "------------------------------------------------------------------------------
@@ -226,3 +230,11 @@ autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
 "------------------------------------------------------------------------------
 let g:godef_split = 2
 let g:godef_same_file_in_same_window = 1
+let g:go_play_open_browser = 0
+let g:go_fmt_fail_silently = 1
+let g:go_fmt_autosave = 0
+
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
